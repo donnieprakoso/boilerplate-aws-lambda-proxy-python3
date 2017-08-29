@@ -1,4 +1,4 @@
-This repo serves Python 3 boilerplate for AWS Lambda with proxy integration.
+# Python 3 Boilerplate for AWS Lambda with Proxy Integration
 
 ## Objective
 The main objective for this boilerplate is to provide a quick start for AWS Lambda Python3 development. This boilerplate starts with a minimal requirement, by only importing Python built in JSON package.
