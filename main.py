@@ -43,7 +43,7 @@ def response_proxy(data):
 	response["statusCode"] = data["statusCode"]
 	response["headers"] = {}
 	if "headers" in data:
-	response["headers"] = data["headers"]
+		response["headers"] = data["headers"]
 	response["body"] = json.dumps(data["body"])
 	return response
 
