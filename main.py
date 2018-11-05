@@ -1,4 +1,5 @@
 import json
+import traceback
 
 '''
 Python 3 Boilerplate for AWS Lambda Proxy Integration
@@ -50,7 +51,8 @@ def response_proxy(data):
 def request_proxy(data):
 	request = {}
 	request = data
-	request["body"]=json.loads(data["body"])
+	if data["body"]:
+		request["body"]=json.loads(data["body"])
 	return request
 
 def handler(event, context):
@@ -60,15 +62,14 @@ def handler(event, context):
 		response["statusCode"]=200
 		response["headers"]={}
 		'''
-		Default headers for CORS
+		Add your key/values to be returned here
 
-		data["headers"]["Access-Control-Allow-Methods"]="GET,POST,OPTIONS"
-		data["headers"]["Access-Control-Allow-Headers"]="Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
-		data["headers"]["Access-Control-Allow-Origin"]="*"
 		'''		
-		response["body"]={}
-	except:
+		data = {}
+		response["body"]=data
+    except Exception as e:
+        traceback.print_exc()
 		response["statusCode"]=500
 		response["body"]={}		
 		
-	return response_proxy(data)
+	return response_proxy(response)
